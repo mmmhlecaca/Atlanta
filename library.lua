@@ -75,9 +75,9 @@ local config_flags = library.config_flags
 
 local themes = {
 	preset = {
-		["outline"] = hex("#0A0A0A"), --
-		["inline"] = hex("#2D2D2D"), --
-		["accent"] = hex("#6078BE"), --
+		["outline"] = hex("#0A0A0A"),
+		["inline"] = hex("#2D2D2D"),
+		["accent"] = hex("#6078BE"),
 		["high_contrast"] = hex("#141414"),
 		["low_contrast"] = hex("#1E1E1E"),
 		["text"] = hex("#B4B4B4"),
@@ -192,7 +192,7 @@ for _, path in next, library.folders do
 	makefolder(library.directory .. path)
 end
 
-writefile("ffff.ttf", game:HttpGet("https://github.com/weasely111/beta/raw/refs/heads/main/fs-tahoma-8px.ttf"))
+writefile("fs-tahoma.ttf", game:HttpGet("https://github.com/mmmhlecaca/Atlanta/raw/refs/heads/main/fs-tahoma-8px.ttf"))
 
 local tahoma = {
 	name = "SmallestPixel7",
@@ -201,20 +201,18 @@ local tahoma = {
 			name = "Regular",
 			weight = 400,
 			style = "normal",
-			assetId = getcustomasset("ffff.ttf"),
+			assetId = getcustomasset("fs-tahoma.ttf"),
 		},
 	},
 }
 
-writefile("dddd.ttf", http_service:JSONEncode(tahoma))
+writefile("fs-tahoma-small.ttf", http_service:JSONEncode(tahoma))
 
-library.font = Font.new(getcustomasset("dddd.ttf"), Enum.FontWeight.Regular)
+library.font = Font.new(getcustomasset("fs-tahoma-small.ttf"), Enum.FontWeight.Regular)
 
 local config_holder
---
 
 -- library functions
--- misc functions
 function library:hoverify(hover, parent)
 	local hover_instance = library:create("Frame", {
 		Parent = parent,
@@ -326,7 +324,7 @@ function library:draggify(frame)
 			end
 
 			if frame.Parent:IsA("ScreenGui") and frame.Parent.DisplayOrder ~= 999999 then
-				library.display_orders += 1 -- shit code
+				library.display_orders += 1
 				frame.Parent.DisplayOrder = library.display_orders
 			end
 		end
@@ -513,7 +511,6 @@ function library:create(instance, options)
 
 	return ins
 end
---
 
 -- elements
 local tooltip_sgui = library:create("ScreenGui", {
@@ -2090,13 +2087,13 @@ function library:esp_preview(properties)
 		items.camera = library:create("Camera", {
 			FieldOfView = 70.00022888183594,
 			CameraType = Enum.CameraType.Track,
-			Focus = cfr(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1), -- bro wtf is this serializer doing
+			Focus = cfr(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),
 			CFrame = cfr(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),
 			Parent = ws,
 			Name = "\0",
 		})
 
-		items.viewportframe.CurrentCamera = items.camera -- sick
+		items.viewportframe.CurrentCamera = items.camera
 		character.Parent = items.viewportframe
 
 		items.camera.CameraSubject = character
